@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="abstracted code">
-      <change afterPath="$PROJECT_DIR$/client.sh" afterDir="false" />
+    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="changed to have server and client">
+      <change afterPath="$PROJECT_DIR$/server.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_processors/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_processors/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/combine_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/combine_commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mean_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/mean_filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/move_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/move_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/rotate_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/rotate_image.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +267,7 @@
       <option name="presentableId" value="Default" />
       <updated>1702924151460</updated>
       <workItem from="1702924153484" duration="11071000" />
-      <workItem from="1703009378290" duration="28088000" />
+      <workItem from="1703009378290" duration="29007000" />
     </task>
     <task id="LOCAL-00001" summary="Created client, and server">
       <created>1703089003274</created>
@@ -298,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703091950470</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changed to have server and client">
+      <created>1703097308707</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703097308707</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +317,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created client, and server" />
     <MESSAGE value="abstracted code" />
-    <option name="LAST_COMMIT_MESSAGE" value="abstracted code" />
+    <MESSAGE value="changed to have server and client" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed to have server and client" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
