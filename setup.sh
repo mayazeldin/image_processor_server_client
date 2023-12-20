@@ -11,17 +11,31 @@ else
 fi
 
 
-# Check if pip is installed
+# Check if pip3 is installed
 if command -v pip3 &>/dev/null; then
-    echo "pip is already installed."
+    echo "pip3 is already installed."
+    # Optionally, you can also check for the specific version here
+    PIP_VERSION=$(pip3 --version | awk '{print $2}')
+    if [ "$PIP_VERSION" = "3.7.9" ]; then
+        echo "pip3 3.7.9 is already installed."
+    else
+        echo "Upgrading pip3 to version 3.7.9..."
+        python3 -m pip install pip==3.7.9
+    fi
 else
     # Install pip for Python 3
     apt-get install -y python3-pip
-    echo "pip has been installed."
+    echo "pip3 has been installed."
+
+    # Upgrade to a specific version, if required
+    echo "Upgrading pip3 to version 3.7.9..."
+    python3 -m pip install pip==3.7.9
 fi
 
-# Install required Python packages
-pip3 install grpcio grpcio-tools protobuf
+pip3 install protobuf==4.21.1
+pip3 install grpcio
+pip3 install grpcio-tools
+pip3 install Pillow
 
 # Check if other dependencies are installed
 if command -v git &>/dev/null; then

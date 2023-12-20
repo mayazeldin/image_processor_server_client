@@ -43,12 +43,7 @@ Client:
   I would want to find a method of processing the image
   in a way that does not require writing the whole image data out to memory and then 
   converting it back to a nlimage. There should be a way of keeping the image in nlimage
-  form and processing segments of the image at a time. 
-- Asynchronous code
-  - Currently, the server does not perform any tasks asynchronously. This could potentially
-  cause the main thread to run slowly since with large images it could take the server a
-  while to write the image to memory and perform the various modifications to the image. 
-  If I had more time, I would write the server to run in an asynchronous thread
+  form and processing segments of the image at a time.
 - Rotation Enum
   - Currently, my code only works for 90, 180, and 270 degree rotations. I would want to 
   expand my code to handle more rotation degrees

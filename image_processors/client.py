@@ -26,58 +26,63 @@ def run(host, port, input, output, rotate, mean):
     :param rotate: (int) degrees to rotate image by
     :param mean: (bool) should mean filter be applied?
     """
-    with grpc.insecure_channel(f"{host}:{port}") as channel:
-        stub = image_pb2_grpc.NLImageServiceStub(channel)
+    channel = grpc.insecure_channel(f"{host}:{port}")
+    try:
+        grpc.channel_ready_future(channel).result(timeout=10)  # Timeout in seconds
+    except grpc.FutureTimeoutError:
+        logging.error(f"Error: Cannot connect to the server at {host}:{port}")
+        sys.exit(1)
+    stub = image_pb2_grpc.NLImageServiceStub(channel)
 
-        # Create an NLImage object to pass to the server
+    # Create an NLImage object to pass to the server
+    try:
+        with open(input, 'rb') as image_file:
+            image_data = image_file.read()
+    except FileNotFoundError:
+        logging.error(f"Error: File not found at path: {input}")
+        sys.exit(1)
+
+    nl_image = image_pb2.NLImage(data=image_data)
+
+    # Rotate Image
+    rotate_request = image_pb2.NLImageRotateRequest(rotation=rotate, image=nl_image)
+    try:
+        nl_image = stub.RotateImage(rotate_request)
+        logging.info("Rotated Image ", rotate, " degrees")
+    # log if error occured
+    except grpc.RpcError as e:
+        if e.code() == grpc.StatusCode.INTERNAL:
+            logging.error(f"Internal server error: {e.details()}")
+        elif e.code() == grpc.StatusCode.CANCELLED:
+            # This code block will be executed if the request was cancelled
+            logging.warning("Request cancelled by the client")
+        else:
+            # Handle other gRPC error codes as needed
+            logging.error(f"gRPC error: {e.code()}: {e.details()}")
+
+    # Mean Filter Image
+    if mean:
+        nl_image_request = image_pb2.NLImage(data=nl_image.data)
         try:
-            with open(input, 'rb') as image_file:
-                image_data = image_file.read()
-        except FileNotFoundError:
-            logging.error(f"Error: File not found at path: {input}")
-            sys.exit(1)
-
-        nl_image = image_pb2.NLImage(data=image_data)
-
-        # Rotate Image
-        rotate_request = image_pb2.NLImageRotateRequest(rotation=rotate, image=nl_image)
-        try:
-            nl_image = stub.RotateImage(rotate_request)
-            logging.info("Rotated Image ", rotate, " degrees")
+            nl_image = stub.MeanFilter(nl_image_request)
+            logging.info("Filtered Image")
         # log if error occured
         except grpc.RpcError as e:
             if e.code() == grpc.StatusCode.INTERNAL:
                 logging.error(f"Internal server error: {e.details()}")
             elif e.code() == grpc.StatusCode.CANCELLED:
-                # This code block will be executed if the request was cancelled
+                 # This code block will be executed if the request was cancelled
                 logging.warning("Request cancelled by the client")
             else:
                 # Handle other gRPC error codes as needed
                 logging.error(f"gRPC error: {e.code()}: {e.details()}")
 
-        # Mean Filter Image
-        if mean:
-            nl_image_request = image_pb2.NLImage(data=nl_image.data)
-            try:
-                nl_image = stub.MeanFilter(nl_image_request)
-                logging.info("Filtered Image")
-            # log if error occured
-            except grpc.RpcError as e:
-                if e.code() == grpc.StatusCode.INTERNAL:
-                    logging.error(f"Internal server error: {e.details()}")
-                elif e.code() == grpc.StatusCode.CANCELLED:
-                     # This code block will be executed if the request was cancelled
-                    logging.warning("Request cancelled by the client")
-                else:
-                    # Handle other gRPC error codes as needed
-                    logging.error(f"gRPC error: {e.code()}: {e.details()}")
 
-
-        path = Path(output)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        with open(path, 'wb') as file:
-            file.write(nl_image.data)
-            logging.info("Outputted file at path: ", output)
+    path = Path(output)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, 'wb') as file:
+        file.write(nl_image.data)
+        logging.info("Outputted file at path: ", output)
 
 def get_rotate(rotate):
     """
