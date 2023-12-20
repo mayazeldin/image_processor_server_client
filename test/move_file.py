@@ -20,7 +20,7 @@ class TestClientScript(unittest.TestCase):
         new_path = "new_dict/new_photo.png"
 
         # Run the client script with appropriate arguments
-        command = "python ../client.py --host 127.0.0.1 --port 50051 --input " + original_path + " --output " + new_path
+        command = "python ../image_processors/client.py --host 127.0.0.1 --port 50051 --input " + original_path + " --output " + new_path
 
         subprocess.run(command, check=True)
 

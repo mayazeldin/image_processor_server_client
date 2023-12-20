@@ -1,23 +1,15 @@
-# Copyright 2015 gRPC authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-"""The Python implementation of the gRPC route guide client."""
+#!/usr/bin/env python
 
 from __future__ import print_function
 import logging
 import sys
 import argparse
 import grpc
+import os
+
+# Add the root directory of project to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(project_root)
 from utils import image_pb2_grpc, image_pb2
 from pathlib import Path
 from utils.helpers import is_port_valid, is_valid_ip
@@ -132,5 +124,6 @@ if __name__ == "__main__":
 
     rotate = get_rotate(args.rotate)
     mean = args.mean
+    print(f"request with output {output} and rotate {rotate} and mean {mean}")
 
     run(host, port, input, output, rotate, mean)

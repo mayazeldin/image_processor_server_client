@@ -1,12 +1,23 @@
+#!/usr/bin/env python
+
 import grpc
 import sys
 from PIL import Image, ImageFilter
-from utils import image_pb2_grpc, image_pb2
 from concurrent.futures import ThreadPoolExecutor
-from utils.helpers import is_port_valid, is_valid_ip, process_image
-from utils.process_functions import rotate_image, apply_mean_filter
 import logging
 import argparse
+
+import os
+
+# Add the root directory of project to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(project_root)
+from utils import image_pb2_grpc, image_pb2
+from pathlib import Path
+from utils.helpers import is_port_valid, is_valid_ip, process_image
+from utils.process_functions import rotate_image, apply_mean_filter
+
+
 
 class NLImageService(image_pb2_grpc.NLImageServiceServicer):
     def RotateImage(self, request, context):
@@ -39,6 +50,7 @@ def serve(port, host):
     server.start()
     logging.info(f"started logging at {host}:{port}")
     server.wait_for_termination()
+    print("ended server")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="NLImage gRPC Client")
@@ -49,5 +61,6 @@ if __name__ == "__main__":
     host = args.host
     is_valid_ip(host)
     is_port_valid(port)
-
+    print(port)
+    print(host)
     serve(port, host)

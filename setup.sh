@@ -32,6 +32,9 @@ else
     echo "git has been installed."
 fi
 
+chmod +x server.sh
+chmod +x client.sh
+
 
 
 # Check the installed Python version

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="Created client, and server">
-      <change afterPath="$PROJECT_DIR$/utils/process_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="abstracted code">
+      <change afterPath="$PROJECT_DIR$/client.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nueralink_project_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/neuralink_project_python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_processors/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_processors/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/setup.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/combine_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/combine_commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/invalid_nlimage.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/invalid_nlimage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/mean_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/mean_filter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/move_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/move_file.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/rotate_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/rotate_image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +29,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/server.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/image_processors/server.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,11 +59,11 @@
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\utils" />
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python" />
+      <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\image_processors" />
+      <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\utils" />
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\test" />
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\service-prompt\proto" />
-      <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\venv" />
     </key>
   </component>
   <component name="RunManager" selected="Python.client">
@@ -150,7 +148,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\zeldi\IdeaProjects\nueralink_project_python\image_processors\client.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,7 +170,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\zeldi\IdeaProjects\nueralink_project_python\server.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\zeldi\IdeaProjects\nueralink_project_python\image_processors\server.py" />
       <option name="PARAMETERS" value="--port 9205 --host 127.0.0.1" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -277,7 +275,7 @@
       <option name="presentableId" value="Default" />
       <updated>1702924151460</updated>
       <workItem from="1702924153484" duration="11071000" />
-      <workItem from="1703009378290" duration="24791000" />
+      <workItem from="1703009378290" duration="28088000" />
     </task>
     <task id="LOCAL-00001" summary="Created client, and server">
       <created>1703089003274</created>
@@ -293,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703089160204</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="abstracted code">
+      <created>1703091950470</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703091950470</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +317,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created client, and server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created client, and server" />
+    <MESSAGE value="abstracted code" />
+    <option name="LAST_COMMIT_MESSAGE" value="abstracted code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

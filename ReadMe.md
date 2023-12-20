@@ -9,6 +9,9 @@ Server:
 - default values set if arguments not provided
   - host: 127.0.0.1
   - port: 50051
+- valid arguments: 
+  - host: Valid Ip address
+  - port : valid open port number
 
 Client:
 - takes in host (ip address), port, input (path to image), output, rotate, mean
@@ -18,8 +21,8 @@ Client:
   - rotate: NONE
   - mean: false
 - Valid Arguments:
-  - host: valid IP address
-  - port: valid open port number
+  - host: valid IP address (corresponds to host of server)
+  - port: valid open port number (corresponds to port of server)
   - input: path to existing image
   - rotate: NONE, NINETY_DEG, ONE_EIGHTY_DEG, TWO_SEVENTY_DEG
 - Required Arguments:
@@ -35,11 +38,12 @@ Client:
   Writing to the disk means that bigger images can be processed since
   there is more memory available in the disk than the stack. Writing 
   the image directly to the stack could potentially lead to a stack overflow
-  with large images. However, there is still a change that with a very large image,
+  with large images. However, there is still a chance that with a very large image,
   the disk can run out of memory and cause the request to fail. With more time, 
   I would want to find a method of processing the image
   in a way that does not require writing the whole image data out to memory and then 
-  converting it back to a nlimage.
+  converting it back to a nlimage. There should be a way of keeping the image in nlimage
+  form and processing segments of the image at a time. 
 - Asynchronous code
   - Currently, the server does not perform any tasks asynchronously. This could potentially
   cause the main thread to run slowly since with large images it could take the server a
@@ -47,4 +51,4 @@ Client:
   If I had more time, I would write the server to run in an asynchronous thread
 - Rotation Enum
   - Currently, my code only works for 90, 180, and 270 degree rotations. I would want to 
-  expand my code to handle more various rotation degrees
+  expand my code to handle more rotation degrees
