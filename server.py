@@ -4,23 +4,35 @@ from PIL import Image, ImageFilter
 from utils import image_pb2_grpc, image_pb2
 from concurrent.futures import ThreadPoolExecutor
 from utils.helpers import is_port_valid, is_valid_ip, process_image
+from utils.process_functions import rotate_image, apply_mean_filter
 import logging
 import argparse
 
 class NLImageService(image_pb2_grpc.NLImageServiceServicer):
     def RotateImage(self, request, context):
-        return process_image(request, context, self.rotate_image)
+        """
+        rotate the nlimage given the image data and rotation degrees stored in request
+        :param request: stores info about image
+        :param context: stores info about errors, processing, etc.
+        :return: nlimage
+        """
+        return process_image(request, context, rotate_image)
 
     def MeanFilter(self, request, context):
-        return process_image(request, context, self.apply_mean_filter)
-
-    def rotate_image(self, image, request):
-        return image.rotate(request.rotation, expand=True)
-
-    def apply_mean_filter(self, image, request):
-        return image.filter(ImageFilter.BoxBlur(1))
+        """
+        apply the mean filter to the nlimage given the image data  stored in request
+        :param request: stores info about image
+        :param context: stores info about errors, processing, etc.
+        :return: nlimage
+        """
+        return process_image(request, context, apply_mean_filter)
 
 def serve(port, host):
+    """
+    start the server at specified port and host
+    :param port: (int) port to connect server to
+    :param host: (string) ip address to connect server to
+    """
     server = grpc.server(ThreadPoolExecutor(max_workers=10))
     image_pb2_grpc.add_NLImageServiceServicer_to_server(NLImageService(), server)
     server.add_insecure_port(f"{host}:{port}")

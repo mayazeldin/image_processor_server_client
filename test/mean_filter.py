@@ -11,6 +11,7 @@ sys.path.append(project_root)
 
 from utils.helpers import are_images_identical
 
+# check that a command that applies a mean filter will apply a mean filter to the image
 class TestClientScript(unittest.TestCase):
     def test_photo_movement(self):
         # Set up the initial paths
@@ -27,8 +28,10 @@ class TestClientScript(unittest.TestCase):
         self.assertTrue(os.path.exists(new_path))
         original_image = Image.open(original_path)
         rotated_image = Image.open(new_path)
+        # Does the new image equal the old image with a mean filter
         self.assertTrue(are_images_identical(original_image.filter(ImageFilter.BoxBlur(1)), rotated_image))
 
+    # delete all files and directories that have been created
     def tearDown(self):
         if os.path.exists("mean.png"):
             os.remove("mean.png")

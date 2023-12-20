@@ -12,7 +12,7 @@ sys.path.append(project_root)
 from utils.helpers import are_images_identical
 
 
-
+# does rotating the image 0, 90, 180, and 270 degrees work?
 class TestClientScript(unittest.TestCase):
 
 

@@ -9,6 +9,7 @@ sys.path.append(project_root)
 
 from utils import image_pb2, image_pb2_grpc
 
+# Test that an invalid protobuf would cause the server to throw an error but not crash
 class TestNLImageService(unittest.TestCase):
     def setUp(self):
         self.host = 'localhost'
@@ -25,10 +26,9 @@ class TestNLImageService(unittest.TestCase):
             self.fail("No error was thrown for an invalid image")
         except grpc.RpcError as e:
             self.assertEqual(e.code(), grpc.StatusCode.INTERNAL)
-            # This check might need to be adjusted based on what error you are expecting
             self.assertIn('Exception deserializing request', e.details())
 
-
+    # delete all files and directories that have been created
     def tearDown(self):
         self.channel.close()
 

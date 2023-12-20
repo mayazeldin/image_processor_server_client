@@ -25,6 +25,15 @@ from utils.helpers import is_port_valid, is_valid_ip
 
 
 def run(host, port, input, output, rotate, mean):
+    """
+    call on the server to process an image and store new image in specified output path given parameters
+    :param host: (string) ip address to connect to
+    :param port: (int) port to connect to
+    :param input: (string) path where original image stored
+    :param output: (string) path to store output image
+    :param rotate: (int) degrees to rotate image by
+    :param mean: (bool) should mean filter be applied?
+    """
     with grpc.insecure_channel(f"{host}:{port}") as channel:
         stub = image_pb2_grpc.NLImageServiceStub(channel)
 
@@ -40,14 +49,37 @@ def run(host, port, input, output, rotate, mean):
 
         # Rotate Image
         rotate_request = image_pb2.NLImageRotateRequest(rotation=rotate, image=nl_image)
-        nl_image = stub.RotateImage(rotate_request)
-        logging.info("Rotated Image ", rotate, " degrees")
+        try:
+            nl_image = stub.RotateImage(rotate_request)
+            logging.info("Rotated Image ", rotate, " degrees")
+        # log if error occured
+        except grpc.RpcError as e:
+            if e.code() == grpc.StatusCode.INTERNAL:
+                logging.error(f"Internal server error: {e.details()}")
+            elif e.code() == grpc.StatusCode.CANCELLED:
+                # This code block will be executed if the request was cancelled
+                logging.warning("Request cancelled by the client")
+            else:
+                # Handle other gRPC error codes as needed
+                logging.error(f"gRPC error: {e.code()}: {e.details()}")
 
         # Mean Filter Image
         if mean:
             nl_image_request = image_pb2.NLImage(data=nl_image.data)
-            nl_image = stub.MeanFilter(nl_image_request)
-            logging.info("Filtered Image")
+            try:
+                nl_image = stub.MeanFilter(nl_image_request)
+                logging.info("Filtered Image")
+            # log if error occured
+            except grpc.RpcError as e:
+                if e.code() == grpc.StatusCode.INTERNAL:
+                    logging.error(f"Internal server error: {e.details()}")
+                elif e.code() == grpc.StatusCode.CANCELLED:
+                     # This code block will be executed if the request was cancelled
+                    logging.warning("Request cancelled by the client")
+                else:
+                    # Handle other gRPC error codes as needed
+                    logging.error(f"gRPC error: {e.code()}: {e.details()}")
+
 
         path = Path(output)
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -56,7 +88,12 @@ def run(host, port, input, output, rotate, mean):
             logging.info("Outputted file at path: ", output)
 
 def get_rotate(rotate):
-
+    """
+    return corresponding integer value for given rotation_enum
+    throw error and exit if invalid enum given
+    :param rotate: rotation enum (string)
+    :return: integer
+    """
     rotation_enum_mapping = {
         "NONE": 0,
         "NINETY_DEG": 90,
@@ -76,7 +113,8 @@ if __name__ == "__main__":
 
     # optional inputs
     parser = argparse.ArgumentParser(description="NLImage gRPC Client")
-    parser.add_argument("--rotate", type=str, default=None, help='Rotation in string format (NONE, NINETY_DEG, ONE_EIGHTY_DEG, TWO_SEVENTY_DEG)')
+    parser.add_argument("--rotate", type=str, default=None,
+                        help='Rotation in string format (NONE, NINETY_DEG, ONE_EIGHTY_DEG, TWO_SEVENTY_DEG)')
     parser.add_argument("--mean", default=False, action='store_true', help='Apply mean filter')
     parser.add_argument("--port", type=int, default=50051, help="Port to bind to (default is 50051)")
     parser.add_argument("--host", type=str, default="127.0.0.1", help="Server to bind to (default is 127.0.0.1)")

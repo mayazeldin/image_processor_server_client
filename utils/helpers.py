@@ -9,6 +9,10 @@ from PIL import Image
 from utils import image_pb2
 
 def is_valid_ip(address):
+    """
+    check if supplied param is a valid ip address
+    if not valid, exit and throw logging error
+    """
     try:
         ipaddress.ip_address(address)
     except ValueError:
@@ -17,6 +21,10 @@ def is_valid_ip(address):
 
 
 def is_port_valid(port):
+    """
+    check if supplied porm is valid port
+    if not valid, exit and throw logging error
+    """
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         try:
             s.bind(("", port))
@@ -25,6 +33,14 @@ def is_port_valid(port):
             sys.exit(1)
 
 def process_image(request, context, process_func):
+    """
+    process an image given the process function
+    return the new image as a nlimage
+    :param request: request that contains the image data
+    :param context: place to store error messages, processing information
+    :param process_func: process function to apply to image data to produce new image
+    :return: nlimage
+    """
     logging.info(f"trying to process image in server using {process_func.__name__}")
 
     try:
@@ -59,7 +75,12 @@ def process_image(request, context, process_func):
         return image_pb2.NLImage()
 
 def are_images_identical(img1, img2):
-    # Check if the images have the same size
+    """
+    are the two images the same?
+    :param img1: Image
+    :param img2: Image
+    :return: bool
+    """
     if img1.size != img2.size:
         return False
 
