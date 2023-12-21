@@ -39,8 +39,8 @@ class TestClientScript(unittest.TestCase):
 
     # delete all files and directories that have been created
     def tearDown(self):
-        if os.path.exists("./test/mean.png"):
-            os.remove("./test/mean.png")
+        if os.path.exists("./test/mean.PNG"):
+            os.remove("./test/mean.PNG")
 
 
 if __name__ == '__main__':
