@@ -23,8 +23,8 @@ class TestClientScript(unittest.TestCase):
         command_server = "./server.sh --host 127.0.0.1 --port 50051"
         command_client = "./client.sh --host 127.0.0.1 --port 50051 --rotate NINETY_DEG --mean " \
                          "--input " + original_path + " --output " + new_path
-        process_server = subprocess.Popen(command_server)
-        process_client = subprocess.Popen(command_client)
+        process_server = subprocess.Popen(command_server, shell=True)
+        process_client = subprocess.Popen(command_client, shell=True)
         process_client.wait()
 
         # Assert that the new path exists
