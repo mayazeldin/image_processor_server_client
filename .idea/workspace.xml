@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="moved client and server">
+    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="updated comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/combine_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/combine_commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/mean_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/mean_filter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/move_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/move_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/nueralink_test.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/test/neuralink_test.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/rotate_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/rotate_image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +63,7 @@
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\service-prompt\proto" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.client">
+  <component name="RunManager" selected="Python tests.Python tests in combine_commands.py">
     <configuration name="client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="neuralink_project_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,6 +108,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests in combine_commands.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="neuralink_project_python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/combine_commands.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests in rotate_image.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="neuralink_project_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,10 +141,12 @@
     <list>
       <item itemvalue="Python.client" />
       <item itemvalue="Python.server" />
+      <item itemvalue="Python tests.Python tests in combine_commands.py" />
       <item itemvalue="Python tests.Python tests in rotate_image.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in combine_commands.py" />
         <item itemvalue="Python.client" />
         <item itemvalue="Python.server" />
         <item itemvalue="Python tests.Python tests in rotate_image.py" />
@@ -150,7 +164,7 @@
       <workItem from="1702924153484" duration="11071000" />
       <workItem from="1703009378290" duration="38996000" />
       <workItem from="1703112019061" duration="445000" />
-      <workItem from="1703123778210" duration="2881000" />
+      <workItem from="1703123778210" duration="7100000" />
     </task>
     <task id="LOCAL-00001" summary="Created client, and server">
       <created>1703089003274</created>
@@ -222,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703124265638</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated comments">
+      <created>1703127574702</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1703127574702</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,14 +267,15 @@
     <MESSAGE value="Changed server script" />
     <MESSAGE value="changed image_pb2 and image_pb2_grpc" />
     <MESSAGE value="moved client and server" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved client and server" />
+    <MESSAGE value="updated comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated comments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nueralink_project_python$.coverage" NAME=" Coverage Results" MODIFIED="1703011738799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/nueralink_project_python$.coverage" NAME=" Coverage Results" MODIFIED="1703129475819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/nueralink_project_python$client.coverage" NAME="client Coverage Results" MODIFIED="1703018841405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nueralink_project_python$nlimage_service.coverage" NAME="nlimage_service Coverage Results" MODIFIED="1703017847148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

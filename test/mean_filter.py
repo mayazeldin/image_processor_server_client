@@ -11,21 +11,23 @@ sys.path.append(project_root)
 
 from utils.helpers import are_images_identical
 
+
 # check that a command that applies a mean filter will apply a mean filter to the image
 class TestClientScript(unittest.TestCase):
     def test_photo_movement(self):
         # Set up the initial paths
-        original_path = 'neuralink_test.PNG'
-        new_path = "mean.PNG"
+        original_path = 'test/neuralink_test.PNG'
+        new_path = "test/mean.PNG"
 
         # Run the client script with appropriate arguments
-        command_server = "python3 ../server.py --hort 127.0.0.1 --port 50051"
+        os.chdir("..")
+        command_server = "./server.py --hort 127.0.0.1 --port 50051"
 
-        command_client = "python3 ../client.py --host 127.0.0.1 --port 50051 --mean " \
-                  "--input " + original_path + " --output " + new_path
-        command = command_server + " && " + command_client
-
-        subprocess.run(command, check=True)
+        command_client = "./client.py --host 127.0.0.1 --port 50051 --mean " \
+                         "--input " + original_path + " --output " + new_path
+        subprocess.Popen(command_server)
+        process = subprocess.Popen(command_client)
+        process.wait()
 
         # Assert that the new path exists
         self.assertTrue(os.path.exists(new_path))

@@ -8,13 +8,9 @@ import logging
 import argparse
 
 import os
-
-# Add the root directory of project to the Python path
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ""))
-sys.path.append(project_root)
 from utils import image_pb2_grpc, image_pb2
 from pathlib import Path
-from utils.helpers import is_port_valid, is_valid_ip, process_image
+from utils.helpers import process_image
 from utils.process_functions import rotate_image, apply_mean_filter
 
 

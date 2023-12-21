@@ -5,14 +5,8 @@ import logging
 import sys
 import argparse
 import grpc
-import os
-
-# Add the root directory of project to the Python path
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ""))
-sys.path.append(project_root)
 from utils import image_pb2_grpc, image_pb2
 from pathlib import Path
-
 
 
 def run(host, port, input, output, rotate, mean):
@@ -71,6 +65,7 @@ def run(host, port, input, output, rotate, mean):
         file.write(nl_image.data)
         logging.info("Outputted file at path: ", output)
 
+
 def throw_error(e):
     """
     log an error message based on error supplied
@@ -86,11 +81,11 @@ def throw_error(e):
         logging.error(f"gRPC error: {e.code()}: {e.details()}")
 
 
-def get_rotate(rotate):
+def get_rotate(rotate_val):
     """
     return corresponding integer value for given rotation_enum
     throw error and exit if invalid enum given
-    :param rotate: rotation enum (string)
+    :param rotate_val: rotation enum (string)
     :return: integer
     """
     rotation_enum_mapping = {
@@ -100,13 +95,14 @@ def get_rotate(rotate):
         "TWO_SEVENTY_DEG": 270,
     }
 
-    if (rotate is not None) and (rotate not in rotation_enum_mapping):
-        logging.error(f"Error: Invalid rotation '{rotate}'."
+    if (rotate_val is not None) and (rotate_val not in rotation_enum_mapping):
+        logging.error(f"Error: Invalid rotation '{rotate_val}'."
                       f" Valid rotations are: NONE, NINETY_DEG, ONE_EIGHTY_DEG, TWO_SEVENTY_DEG")
         sys.exit(1)
 
     # Example: RotateImage RPC with user-specified rotation
-    return rotation_enum_mapping.get(rotate, 0)
+    return rotation_enum_mapping.get(rotate_val, 0)
+
 
 if __name__ == "__main__":
 
@@ -124,8 +120,8 @@ if __name__ == "__main__":
     # get inputs
     port = args.port
     host = args.host
-    input = args.input
+    input_val = args.input
     output = args.output
     rotate = get_rotate(args.rotate)
     mean = args.mean
-    run(host, port, input, output, rotate, mean)
+    run(host, port, input_val, output, rotate, mean)

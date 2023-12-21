@@ -9,22 +9,24 @@ import os
 # Add the root directory of your project to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(project_root)
-
 from utils.helpers import are_images_identical
+
 
 # check that the outputted image is stored in the path supplied by the output variable
 class TestClientScript(unittest.TestCase):
     def test_photo_movement(self):
         # Set up the initial paths
-        original_path = 'neuralink_test.PNG'
-        new_path = "new_dict/new_photo.png"
+        original_path = 'test/neuralink_test.PNG'
+        new_path = "test/new_dict/new_photo.png"
 
+        os.chdir("..")
         # Run the client script with appropriate arguments
-        command_server = "python3 ../server.py --hort 127.0.0.1 --port 50051"
-        command_client = "python3 ../client.py " \
+        command_server = "./server.py --host 127.0.0.1 --port 50051"
+        command_client = "./client.py " \
                          "--host 127.0.0.1 --port 50051 --input " + original_path + " --output " + new_path
-        command = command_server + " && " + command_client
-        subprocess.run(command, check=True)
+        subprocess.Popen(command_server)
+        process = subprocess.Popen(command_client)
+        process.wait()
 
         # Assert that the new path exists
         self.assertTrue(os.path.exists(new_path))
@@ -38,6 +40,7 @@ class TestClientScript(unittest.TestCase):
         if os.path.exists("new_dict/new_photo.png"):
             os.remove("new_dict/new_photo.png")
             os.rmdir("new_dict")
+
 
 if __name__ == '__main__':
     unittest.main()
