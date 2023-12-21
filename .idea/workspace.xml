@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="changed image_pb2 and image_pb2_grpc">
+    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="moved client and server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/combine_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/combine_commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/mean_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/mean_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/move_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/move_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/nueralink_test.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/test/neuralink_test.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/rotate_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/rotate_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +29,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/image_processors/server.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/server.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,8 +59,8 @@
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\utils" />
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python" />
+      <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\utils" />
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\image_processors" />
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\test" />
       <recent name="C:\Users\zeldi\IdeaProjects\nueralink_project_python\service-prompt\proto" />
@@ -142,6 +150,7 @@
       <workItem from="1702924153484" duration="11071000" />
       <workItem from="1703009378290" duration="38996000" />
       <workItem from="1703112019061" duration="445000" />
+      <workItem from="1703123778210" duration="2881000" />
     </task>
     <task id="LOCAL-00001" summary="Created client, and server">
       <created>1703089003274</created>
@@ -206,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703109738215</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="moved client and server">
+      <created>1703124265638</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703124265638</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +245,8 @@
     <MESSAGE value="changed to have server and client" />
     <MESSAGE value="Changed server script" />
     <MESSAGE value="changed image_pb2 and image_pb2_grpc" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed image_pb2 and image_pb2_grpc" />
+    <MESSAGE value="moved client and server" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved client and server" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

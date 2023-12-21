@@ -1,36 +1,8 @@
-import ipaddress
-import socket
 import logging
-import sys
-import tempfile
-import os
+import io
 import grpc
 from PIL import Image
 from utils import image_pb2
-
-def is_valid_ip(address):
-    """
-    check if supplied param is a valid ip address
-    if not valid, exit and throw logging error
-    """
-    try:
-        ipaddress.ip_address(address)
-    except ValueError:
-        logging.error("Invalid IPAddress given")
-        sys.exit(1)
-
-
-def is_port_valid(port):
-    """
-    check if supplied porm is valid port
-    if not valid, exit and throw logging error
-    """
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        try:
-            s.bind(("", port))
-        except socket.error:
-            logging.error("Port already in use")
-            sys.exit(1)
 
 def process_image(request, context, process_func):
     """
@@ -44,29 +16,28 @@ def process_image(request, context, process_func):
     logging.info(f"trying to process image in server using {process_func.__name__}")
 
     try:
-        # Create a temporary file to save the incoming image
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as temp_file:
-            temp_file.write(request.data if hasattr(request, 'data') else request.image.data)
+        # Read incoming image data
+        incoming_data = request.data if hasattr(request, 'data') else request.image.data
 
-            # Open the temporary file as an image
-            image = Image.open(temp_file.name)
+        # Open the incoming data as an image
+        image = Image.open(io.BytesIO(incoming_data))
 
-            # Call the provided processing function
-            processed_image = process_func(image, request)
+        # Call the provided processing function
+        processed_image = process_func(image, request)
 
-            # Save the processed image back to the temporary file
-            processed_image.save(temp_file.name, format='PNG')
+        # Create a bytes buffer for the processed image
+        processed_image_buffer = io.BytesIO()
 
-            # Read the processed image data from the temporary file
-            with open(temp_file.name, 'rb') as temp_outfile:
-                processed_image_data = temp_outfile.read()
+        # Save the processed image to the buffer
+        processed_image.save(processed_image_buffer, format='PNG')
 
-        # Clean up the temporary file
-        os.remove(temp_file.name)
+        # Get the byte data from the buffer
+        processed_image_data = processed_image_buffer.getvalue()
 
         # Create and return the NLImage with the processed image data
         nl_image = image_pb2.NLImage(data=processed_image_data)
         return nl_image
+
 
     except Exception as e:
         context.set_code(grpc.StatusCode.INTERNAL)

@@ -7,7 +7,7 @@ The setup script requires a clean install of Ubuntu 22.04
 Server:
 - takes in a host (ip address) and port value
 - default values set if arguments not provided
-  - host: 127.0.0.1
+  - host: localhost
   - port: 50051
 - valid arguments: 
   - host: Valid Ip address
@@ -16,7 +16,7 @@ Server:
 Client:
 - takes in host (ip address), port, input (path to image), output, rotate, mean
 - default values:
-  - host: 127.0.0.1
+  - host: localhost
   - port: 50051
   - rotate: NONE
   - mean: false
@@ -28,22 +28,23 @@ Client:
 - Required Arguments:
   - input
   - output
+- Assumes that a server is running at the specified host and port
 
 ---
 
 ### Things To Add
-- Memory Safeguarding in Server
-  - Currently, when the image is received in a request in the server,
-  it writes the contents of the image to a temporary file in disk. 
-  Writing to the disk means that bigger images can be processed since
-  there is more memory available in the disk than the stack. Writing 
-  the image directly to the stack could potentially lead to a stack overflow
-  with large images. However, there is still a chance that with a very large image,
-  the disk can run out of memory and cause the request to fail. With more time, 
-  I would want to find a method of processing the image
-  in a way that does not require writing the whole image data out to memory and then 
-  converting it back to a nlimage. There should be a way of keeping the image in nlimage
-  form and processing segments of the image at a time.
+- Memory Safeguarding:
+  - Currently, when an image request is sent to the server, the image data is written to the stack
+  in both the client and the server code. This could potentially lead to a stack overflow if 
+  large images are being processed or if there are many image requests being sent to the server.
+  I would want to implement the following safeguards:
+    1. Add a service queue so that there is a limit to the number of parallel requests against 
+    the server
+    2. Implement code that can limit the maximum size of an image
+    3. Investigate methodology to compress image data that are exchanged between client and server
 - Rotation Enum
   - Currently, my code only works for 90, 180, and 270 degree rotations. I would want to 
-  expand my code to handle more rotation degrees
+  expand my code to handle arbitrary angle rotations
+- Create Docker File
+  - Currently, I have not implemented a Dockerfile that can run my code for user that does 
+  not have my production environment. 

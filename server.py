@@ -48,19 +48,19 @@ def serve(port, host):
     image_pb2_grpc.add_NLImageServiceServicer_to_server(NLImageService(), server)
     server.add_insecure_port(f"{host}:{port}")
     server.start()
-    logging.info(f"started logging at {host}:{port}")
-    server.wait_for_termination()
-    print("ended server")
+    logging.info(f"started server at {host}:{port}")
+    try:
+        server.wait_for_termination()
+    except KeyboardInterrupt:
+        server.stop(0)
+        logging.info("Server stopped due to keyboard interruption")
+    logging.info("ended server")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="NLImage gRPC Client")
     parser.add_argument("--port", type=int, default=50051, help="Port to bind to")
-    parser.add_argument("--host", type=str, default="127.0.0.1", help="Server to bind to")
+    parser.add_argument("--host", type=str, default="localhost", help="Server to bind to")
     args = parser.parse_args()
     port = args.port
     host = args.host
-    is_valid_ip(host)
-    is_port_valid(port)
-    print(port)
-    print(host)
     serve(port, host)

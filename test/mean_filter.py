@@ -15,12 +15,15 @@ from utils.helpers import are_images_identical
 class TestClientScript(unittest.TestCase):
     def test_photo_movement(self):
         # Set up the initial paths
-        original_path = 'nueralink_test.PNG'
+        original_path = 'neuralink_test.PNG'
         new_path = "mean.PNG"
 
         # Run the client script with appropriate arguments
-        command = "python ../image_processors/client.py --host 127.0.0.1 --port 50051 --mean " \
+        command_server = "python3 ../server.py --hort 127.0.0.1 --port 50051"
+
+        command_client = "python3 ../client.py --host 127.0.0.1 --port 50051 --mean " \
                   "--input " + original_path + " --output " + new_path
+        command = command_server + " && " + command_client
 
         subprocess.run(command, check=True)
 

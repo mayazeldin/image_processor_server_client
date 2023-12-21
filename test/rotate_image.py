@@ -18,15 +18,17 @@ class TestClientScript(unittest.TestCase):
 
     def setUp(self):
         # Set up common variables for all tests
-        self.original_path = 'nueralink_test.PNG'
+        self.original_path = 'neuralink_test.PNG'
         self.new_path_0 = "0.PNG"
         self.new_path_90 = "90.PNG"
         self.new_path_180 = "180.PNG"
         self.new_path_270 = "270.PNG"
 
     def call_client_script(self, rotate_enum, new_path):
-        command = f"python.exe ../image_processors/client.py --host 127.0.0.1 --port 50051" \
+        command_server = "python3 ../server.py --hort 127.0.0.1 --port 50051"
+        command_client = f"python3 ../client.py --host 127.0.0.1 --port 50051" \
                   f" --rotate {rotate_enum} --input {self.original_path} --output {new_path}"
+        command = command_server + " && " + command_client
         subprocess.run(command, shell=True, check=True)
         self.assertTrue(os.path.exists(new_path))
 
