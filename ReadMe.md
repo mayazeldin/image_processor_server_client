@@ -65,4 +65,6 @@ Client:
   The test runs the server from a script. But when I terminate the server script, the
   server process continues to run. I need to investigate further how to properly handle
   terminating the server within my testing program. 
-  Currently, the only method that is working is manually killing the processes
+  Currently, the only method that is working is manually killing the processes. One way
+  to fix this error, is to have my python code call on server.py and client.py to execute
+  directly instead of calling on ./server and ./client. 
