@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="updated comments">
+    <list default="true" id="49a1e2fd-000c-441e-98f0-969f86b30b98" name="Changes" comment="made shell =true">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/combine_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/combine_commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/mean_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/mean_filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/move_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/move_file.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/rotate_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/rotate_image.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +162,7 @@
       <workItem from="1702924153484" duration="11071000" />
       <workItem from="1703009378290" duration="38996000" />
       <workItem from="1703112019061" duration="445000" />
-      <workItem from="1703123778210" duration="7100000" />
+      <workItem from="1703123778210" duration="10377000" />
     </task>
     <task id="LOCAL-00001" summary="Created client, and server">
       <created>1703089003274</created>
@@ -243,7 +241,28 @@
       <option name="project" value="LOCAL" />
       <updated>1703127574702</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="trying to get tests to work">
+      <created>1703132708125</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1703132708125</updated>
+    </task>
+    <task id="LOCAL-00013" summary="trying to get tests to work">
+      <created>1703136444942</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703136444942</updated>
+    </task>
+    <task id="LOCAL-00014" summary="made shell =true">
+      <created>1703136640556</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1703136640556</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +287,9 @@
     <MESSAGE value="changed image_pb2 and image_pb2_grpc" />
     <MESSAGE value="moved client and server" />
     <MESSAGE value="updated comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated comments" />
+    <MESSAGE value="trying to get tests to work" />
+    <MESSAGE value="made shell =true" />
+    <option name="LAST_COMMIT_MESSAGE" value="made shell =true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

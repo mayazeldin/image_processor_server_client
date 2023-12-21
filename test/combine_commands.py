@@ -39,8 +39,8 @@ class TestClientScript(unittest.TestCase):
 
     # delete all files and directories that have been created
     def tearDown(self):
-        if os.path.exists("combine_command.png"):
-            os.remove("combine_command.png")
+        if os.path.exists("test/combine_command.png"):
+            os.remove("test/combine_command.png")
 
 
 

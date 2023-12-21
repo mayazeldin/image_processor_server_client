@@ -21,10 +21,8 @@ class TestClientScript(unittest.TestCase):
         self.new_path_90 = "test/90.PNG"
         self.new_path_180 = "test/180.PNG"
         self.new_path_270 = "test/270.PNG"
-        os.chdir("..")
 
     def call_client_script(self, rotate_enum, new_path):
-
         command_server = "./server.sh --host 127.0.0.1 --port 50051"
         command_client = f"./client.sh --host 127.0.0.1 --port 50051" \
                   f" --rotate {rotate_enum} --input {self.original_path} --output {new_path}"
@@ -35,20 +33,28 @@ class TestClientScript(unittest.TestCase):
         process_server.kill()
 
     def test_photo_movement_0_deg(self):
+        os.chdir("..")
         self.call_client_script("NONE", self.new_path_0)
         self.compare_images(0, self.new_path_0)
+        os.chdir("./test")
 
     def test_photo_movement_90_deg(self):
+        os.chdir("..")
         self.call_client_script("NINETY_DEG", self.new_path_90)
         self.compare_images(90, self.new_path_90)
+        os.chdir("./test")
 
     def test_photo_movement_180_deg(self):
+        os.chdir("..")
         self.call_client_script("ONE_EIGHTY_DEG", self.new_path_180)
         self.compare_images(180, self.new_path_180)
+        os.chdir("./test")
 
     def test_photo_movement_270_deg(self):
+        os.chdir("..")
         self.call_client_script("TWO_SEVENTY_DEG", self.new_path_270)
         self.compare_images(270, self.new_path_270)
+        os.chdir("./test")
 
     def compare_images(self, angle, new_path):
         original_image = Image.open(self.original_path)
@@ -56,14 +62,14 @@ class TestClientScript(unittest.TestCase):
         self.assertTrue(are_images_identical(original_image.rotate(angle, expand=True), rotated_image))
 
     def tearDown(self):
-        if os.path.exists("0.PNG"):
-            os.remove("0.PNG")
-        if os.path.exists("90.PNG"):
-            os.remove("90.PNG")
-        if os.path.exists("180.PNG"):
-            os.remove("180.PNG")
-        if os.path.exists("270.PNG"):
-            os.remove("270.PNG")
+        if os.path.exists("test/0.PNG"):
+            os.remove("test/0.PNG")
+        if os.path.exists("test/90.PNG"):
+            os.remove("test/90.PNG")
+        if os.path.exists("test/180.PNG"):
+            os.remove("test/180.PNG")
+        if os.path.exists("test/270.PNG"):
+            os.remove("test/270.PNG")
 
 
 if __name__ == '__main__':
