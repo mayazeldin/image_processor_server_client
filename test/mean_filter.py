@@ -21,8 +21,8 @@ class TestClientScript(unittest.TestCase):
 
         # Run the client script with appropriate arguments
         os.chdir("..")
-        command_server = "./server.sh --host 127.0.0.1 --port 50051"
-        command_client = "./client.sh --host 127.0.0.1 --port 50051 --mean " \
+        command_server = "./server --host 127.0.0.1 --port 50051"
+        command_client = "./client --host 127.0.0.1 --port 50051 --mean " \
                          "--input " + original_path + " --output " + new_path
         process_server = subprocess.Popen(command_server, shell=True)
         process_client = subprocess.Popen(command_client, shell=True)

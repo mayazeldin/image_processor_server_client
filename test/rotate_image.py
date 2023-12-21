@@ -23,7 +23,7 @@ class TestClientScript(unittest.TestCase):
         self.new_path_270 = "test/270.PNG"
 
     def call_client_script(self, rotate_enum, new_path):
-        command_server = "./server.sh --host 127.0.0.1 --port 50051"
+        command_server = "./server --host 127.0.0.1 --port 50051"
         command_client = f"./client.sh --host 127.0.0.1 --port 50051" \
                   f" --rotate {rotate_enum} --input {self.original_path} --output {new_path}"
         process_server = subprocess.Popen(command_server, shell=True)

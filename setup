@@ -44,8 +44,8 @@ else
     echo "git has been installed."
 fi
 
-chmod +x server.sh
-chmod +x client.sh
+chmod +x server
+chmod +x client
 
 # Check the installed Python version
 python3 --version
