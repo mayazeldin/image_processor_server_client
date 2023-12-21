@@ -62,14 +62,14 @@ class TestClientScript(unittest.TestCase):
         self.assertTrue(are_images_identical(original_image.rotate(angle, expand=True), rotated_image))
 
     def tearDown(self):
-        if os.path.exists("test/0.PNG"):
-            os.remove("test/0.PNG")
-        if os.path.exists("test/90.PNG"):
-            os.remove("test/90.PNG")
-        if os.path.exists("test/180.PNG"):
-            os.remove("test/180.PNG")
-        if os.path.exists("test/270.PNG"):
-            os.remove("test/270.PNG")
+        if os.path.exists("0.PNG"):
+            os.remove("0.PNG")
+        if os.path.exists("90.PNG"):
+            os.remove("90.PNG")
+        if os.path.exists("180.PNG"):
+            os.remove("180.PNG")
+        if os.path.exists("270.PNG"):
+            os.remove("270.PNG")
 
 
 if __name__ == '__main__':

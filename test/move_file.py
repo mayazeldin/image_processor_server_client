@@ -39,9 +39,9 @@ class TestClientScript(unittest.TestCase):
 
     # delete all files and directories that have been created
     def tearDown(self):
-        if os.path.exists("new_dict/new_photo.png"):
-            os.remove("new_dict/new_photo.png")
-            os.rmdir("new_dict")
+        if os.path.exists("./test/new_dict/new_photo.png"):
+            os.remove("./test/new_dict/new_photo.png")
+            os.rmdir("./test/new_dict")
 
 
 if __name__ == '__main__':
