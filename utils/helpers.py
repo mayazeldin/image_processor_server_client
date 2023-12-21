@@ -4,6 +4,7 @@ import grpc
 from PIL import Image
 from utils import image_pb2
 
+
 def process_image(request, context, process_func):
     """
     process an image given the process function
@@ -38,12 +39,12 @@ def process_image(request, context, process_func):
         nl_image = image_pb2.NLImage(data=processed_image_data)
         return nl_image
 
-
     except Exception as e:
         context.set_code(grpc.StatusCode.INTERNAL)
         context.set_details(f'Error processing image: {str(e)}')
         logging.error("Error processing image occurred")
         return image_pb2.NLImage()
+
 
 def are_images_identical(img1, img2):
     """

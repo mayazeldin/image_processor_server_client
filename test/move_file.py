@@ -21,12 +21,12 @@ class TestClientScript(unittest.TestCase):
 
         os.chdir("..")
         # Run the client script with appropriate arguments
-        command_server = "./server.py --host 127.0.0.1 --port 50051"
-        command_client = "./client.py " \
+        command_server = "./server.sh --host 127.0.0.1 --port 50051"
+        command_client = "./client.sh " \
                          "--host 127.0.0.1 --port 50051 --input " + original_path + " --output " + new_path
-        subprocess.Popen(command_server)
-        process = subprocess.Popen(command_client)
-        process.wait()
+        process_server = subprocess.Popen(command_server)
+        process_client = subprocess.Popen(command_client)
+        process_client.wait()
 
         # Assert that the new path exists
         self.assertTrue(os.path.exists(new_path))
@@ -34,6 +34,8 @@ class TestClientScript(unittest.TestCase):
         moved_image = Image.open(new_path)
         # does the new image in the path specified at output equal the original image?
         self.assertTrue(are_images_identical(original_image, moved_image))
+
+        process_server.kill()
 
     # delete all files and directories that have been created
     def tearDown(self):

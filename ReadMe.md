@@ -48,3 +48,12 @@ Client:
 - Create Docker File
   - Currently, I have not implemented a Dockerfile that can run my code for user that does 
   not have my production environment. 
+- Killing processes
+  - Currently, after running server.sh, my code fails to kill the server.py process. 
+  This is especially troublesome when trying to run multiple of my test files in a row. 
+  Each of my test files creates a server and then sends a client request to the server. 
+  However, when the test exits, the server processes continue to run. I could possibly
+  restructure my tests so that they only initialize a server once before running all the tests.
+  However, there would be other scenarios in which killing the server and all its processes
+  with some sort of clean up script would be helpful. At the moment, after running the server.sh
+  script or one of my tests, the server processes must be manually killed in the terminal. 

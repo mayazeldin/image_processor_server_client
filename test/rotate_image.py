@@ -25,13 +25,14 @@ class TestClientScript(unittest.TestCase):
 
     def call_client_script(self, rotate_enum, new_path):
 
-        command_server = "python3 ../server.py --hort 127.0.0.1 --port 50051"
-        command_client = f"python3 ../client.py --host 127.0.0.1 --port 50051" \
+        command_server = "./server.sh --host 127.0.0.1 --port 50051"
+        command_client = f"./client.sh --host 127.0.0.1 --port 50051" \
                   f" --rotate {rotate_enum} --input {self.original_path} --output {new_path}"
-        subprocess.Popen(command_server)
-        process = subprocess.Popen(command_client)
-        process.wait()
+        process_server = subprocess.Popen(command_server)
+        process_client = subprocess.Popen(command_client)
+        process_client.wait()
         self.assertTrue(os.path.exists(new_path))
+        process_server.kill()
 
     def test_photo_movement_0_deg(self):
         self.call_client_script("NONE", self.new_path_0)

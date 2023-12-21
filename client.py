@@ -44,7 +44,7 @@ def run(host, port, input, output, rotate, mean):
     try:
         nl_image = stub.RotateImage(rotate_request)
         logging.info("Rotated Image ", rotate, " degrees")
-    # log if error occured
+    # log if error happened
     except grpc.RpcError as e:
         throw_error(e)
 
@@ -54,7 +54,7 @@ def run(host, port, input, output, rotate, mean):
         try:
             nl_image = stub.MeanFilter(nl_image_request)
             logging.info("Filtered Image")
-        # log if error occured
+        # log if error happened
         except grpc.RpcError as e:
             throw_error(e)
 
@@ -100,7 +100,6 @@ def get_rotate(rotate_val):
                       f" Valid rotations are: NONE, NINETY_DEG, ONE_EIGHTY_DEG, TWO_SEVENTY_DEG")
         sys.exit(1)
 
-    # Example: RotateImage RPC with user-specified rotation
     return rotation_enum_mapping.get(rotate_val, 0)
 
 

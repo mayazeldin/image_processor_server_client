@@ -20,12 +20,12 @@ class TestClientScript(unittest.TestCase):
 
         os.chdir("..")
         # Run the client script with appropriate arguments
-        command_server = "./server.py --hort 127.0.0.1 --port 50051"
-        command_client = "./client.py --host 127.0.0.1 --port 50051 --rotate NINETY_DEG --mean " \
+        command_server = "./server.sh --host 127.0.0.1 --port 50051"
+        command_client = "./client.sh --host 127.0.0.1 --port 50051 --rotate NINETY_DEG --mean " \
                          "--input " + original_path + " --output " + new_path
-        subprocess.Popen(command_server)
-        process = subprocess.Popen(command_client)
-        process.wait()
+        process_server = subprocess.Popen(command_server)
+        process_client = subprocess.Popen(command_client)
+        process_client.wait()
 
         # Assert that the new path exists
         self.assertTrue(os.path.exists(new_path))
@@ -34,6 +34,8 @@ class TestClientScript(unittest.TestCase):
         rotated_image = Image.open(new_path)
         # Assert that the new file is equal to the original file filtered and rotated
         self.assertTrue(are_images_identical(original_image.filter(ImageFilter.BoxBlur(1)), rotated_image))
+
+        process_server.kill()
 
     # delete all files and directories that have been created
     def tearDown(self):
